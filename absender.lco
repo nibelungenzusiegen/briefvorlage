@@ -13,7 +13,7 @@ fromrule=afteraddress%  % Trennlinie unter dem Briefkopf
 }
 
 \RequirePackage[utf8]{inputenc}
-\RequirePackage[ngerman]{babel}
+%\RequirePackage[ngerman]{babel}
 
 \setkomavar{fromname}{Max Mustermann} % Name
 \setkomavar{fromaddress}{% % Adresse

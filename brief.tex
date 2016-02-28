@@ -4,15 +4,15 @@
 ]{scrlttr2}
 
 % ===== Deutsche Sprache =====
-\usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
+\usepackage{fontenc}
 % ============================
 
 \LoadLetterOption{DIN} % Einstellungen für DIN 676 laden
 
-\LoadLetterOption{absender} % Absenderdaten und -einstellungen aus absender.lco laden
+%\LoadLetterOption{absender} % Absenderdaten und -einstellungen aus absender.lco laden
 
-\usepackage{graphicx} % Um Grafiken (bspw. das Logo) einbinden zu können
+\usepackage[xetex]{graphicx} % Um Grafiken (bspw. das Logo) einbinden zu können
 
 \begin{document}
 
@@ -40,9 +40,8 @@
 
 \opening{Sehr geehrte Frau Musterfrau,}
 
-hier kommt der Text hin.
-
 \closing{Mit freundlichen Grüßen,}
+
 
 % ===== Postskriptum =====
 \ps PS: \dots
