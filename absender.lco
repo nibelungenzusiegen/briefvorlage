@@ -1,0 +1,52 @@
+\ProvidesFile{absender.lco}
+
+\KOMAoptions{%
+% fromemail=true,       % Email wird im Briefkopf angezeigt
+% fromphone=true,       % Telefonnumer wird im Briefkopf angezeigt
+% fromfax=true,         % Faxnummer wird im Briefkopf angezeit
+% fromurl=true,         % URL wird im Briefkopf angezeigt
+% fromlogo=true,        % Logo wird im Briefkopf angezeigt
+% subject=titled,       % Druckt "Betrifft: " vor dem Betreff
+locfield=wide,          % Breite Absenderergänzung (location)
+fromalign=left,         % Ausrichtung des Briefkopfes
+fromrule=afteraddress%  % Trennlinie unter dem Briefkopf
+}
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[ngerman]{babel}
+
+\setkomavar{fromname}{Max Mustermann} % Name
+\setkomavar{fromaddress}{% % Adresse
+  Musterstr. 42\\
+  01234 Musterstadt%
+}
+\setkomavar{fromfax}{01234~56789} % Faxnummer
+\setkomavar{fromemail}{max.muster@muster.com} % Email-Adresse
+\setkomavar{fromphone}{01234~56789} % Telefonnummer
+\setkomavar{fromurl}[Website:~]{www.muster.com} % Website
+
+% ===== Absenderergänzung =====
+\setkomavar{location}{%
+  \raggedright\footnotesize{%
+  \usekomavar{fromname}\\
+  \usekomavar{fromaddress}\\
+  \usekomavar*{fromphone}\usekomavar{fromphone}\\
+  \usekomavar*{fromfax}\usekomavar{fromfax}\\
+  \usekomavar*{fromemail}\usekomavar{fromemail}
+  \usekomavar*{fromurl}\usekomavar{fromurl}}%
+}
+% ============================
+
+% Logo
+% \setkomavar{fromlogo}{\includegraphics{logo.png}}
+
+% Die Bankverbindung wird nicht automatisch verwendet. Dazu muss bspw. mittels \firstfoot ein eigener Brieffuß definiert werden.
+\setkomavar{frombank}{}
+
+% ===== Signatur =====
+\setkomavar{signature}{%
+  \usekomavar{fromname}\\
+  Geschäftsführer%
+}
+\renewcommand*{\raggedsignature}{\raggedright}
+% ====================

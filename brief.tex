@@ -1,0 +1,68 @@
+\documentclass[%
+  fontsize=12pt, % Schriftgröße
+  version=last%  % Neueste Version von KOMA-Skript verwenden
+]{scrlttr2}
+
+% ===== Deutsche Sprache =====
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+% ============================
+
+\LoadLetterOption{DIN} % Einstellungen für DIN 676 laden
+
+\LoadLetterOption{absender} % Absenderdaten und -einstellungen aus absender.lco laden
+
+\usepackage{graphicx} % Um Grafiken (bspw. das Logo) einbinden zu können
+
+\begin{document}
+
+\begin{letter}{%
+% ===== Zielanschrift =====
+  Erika Musterfrau\\
+  Musterweg 43\\
+  56789 Musterhausen%
+% =======================
+}
+
+% ====== Geschäftszeichenzeile =========
+\setkomavar{yourref}{}          % Ihr Zeichen
+\setkomavar{yourmail}{}         % Ihr Schreiben vom
+\setkomavar{myref}{}            % Unser Zeichen
+\setkomavar{customer}{}         % Kundennummer
+\setkomavar{invoice}{}          % Rechnungsnummer
+\setkomavar{place}{Musterstadt} % Ort
+\setkomavar{date}{\today}       % Datum
+% =====================================
+
+\setkomavar{title}{Titel}
+
+\setkomavar{subject}{Betreff}
+
+\opening{Sehr geehrte Frau Musterfrau,}
+
+hier kommt der Text hin.
+
+\closing{Mit freundlichen Grüßen,}
+
+% ===== Postskriptum =====
+\ps PS: \dots
+% ========================
+
+% ===== Anlage(n) =====
+% \setkomavar*{enclseparator}{Anlage}
+\encl{%
+  Anlage 1\\
+  Anlage 2%
+}
+% ===================
+
+% ===== Verteiler =====
+% \setkomavar*{ccseparator}{Kopie an}
+\cc{%
+  Verteiler 1\\
+  Verteiler 2%
+}
+% =====================
+
+\end{letter}
+\end{document}
