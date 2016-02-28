@@ -3,27 +3,26 @@
 \KOMAoptions{%
 % fromemail=true,       % Email wird im Briefkopf angezeigt
 % fromphone=true,       % Telefonnumer wird im Briefkopf angezeigt
-% fromfax=true,         % Faxnummer wird im Briefkopf angezeit
+% fromfax=false,         % Faxnummer wird im Briefkopf angezeit
 % fromurl=true,         % URL wird im Briefkopf angezeigt
-% fromlogo=true,        % Logo wird im Briefkopf angezeigt
+fromlogo=true,        % Logo wird im Briefkopf angezeigt
 % subject=titled,       % Druckt "Betrifft: " vor dem Betreff
 locfield=wide,          % Breite Absenderergänzung (location)
 fromalign=left,         % Ausrichtung des Briefkopfes
 fromrule=afteraddress%  % Trennlinie unter dem Briefkopf
 }
 
-\RequirePackage[utf8]{inputenc}
-%\RequirePackage[ngerman]{babel}
-
-\setkomavar{fromname}{Max Mustermann} % Name
+\setkomavar{fromname}{CDStV Nibelungen zu Siegen im Wingolfsbund} % Name
 \setkomavar{fromaddress}{% % Adresse
-  Musterstr. 42\\
-  01234 Musterstadt%
+  Sieghütter Hauptweg 110\\
+  D-57072 Siegen
 }
-\setkomavar{fromfax}{01234~56789} % Faxnummer
-\setkomavar{fromemail}{max.muster@muster.com} % Email-Adresse
-\setkomavar{fromphone}{01234~56789} % Telefonnummer
-\setkomavar{fromurl}[Website:~]{www.muster.com} % Website
+\setkomavar{fromfax}{n/A} % Faxnummer
+\setkomavar{fromemail}{hallo@nibelungen-siegen.de} % Email-Adresse
+\setkomavar{fromphone}{+49 (0) 271 – 770 218 6} % Telefonnummer
+\setkomavar{fromurl}[Website:~]{www.nibelungen-siegen.de} % Website
+\setkomavar{backaddress}{Nibelungen zu Siegen\usekomavar{backaddressseparator}\usekomavar{fromaddress}}
+\setkomavar{backaddressseparator}{ $\diamond$ }
 
 % ===== Absenderergänzung =====
 \setkomavar{location}{%
@@ -31,22 +30,33 @@ fromrule=afteraddress%  % Trennlinie unter dem Briefkopf
   \usekomavar{fromname}\\
   \usekomavar{fromaddress}\\
   \usekomavar*{fromphone}\usekomavar{fromphone}\\
-  \usekomavar*{fromfax}\usekomavar{fromfax}\\
+%  \usekomavar*{fromfax}\usekomavar{fromfax}\\
   \usekomavar*{fromemail}\usekomavar{fromemail}
   \usekomavar*{fromurl}\usekomavar{fromurl}}%
 }
 % ============================
+   
 
 % Logo
-% \setkomavar{fromlogo}{\includegraphics{logo.png}}
+\setkomavar{fromlogo}{\includegraphics[width=3.5cm]{images/wappen.png}}
+
+\setkomavar{firsthead}[]{
+\noindent
+\parbox[][][t]{4cm}{\usekomavar{fromlogo}} 
+\parbox[][][s]{1\textwidth}{
+{\Large Christlich Deutsche Studentenverbindung} 	\\
+{\Huge Nibelungen zu Siegen}						\\
+{\Large im Wingolfsbund}							} 
+ 
+}
 
 % Die Bankverbindung wird nicht automatisch verwendet. Dazu muss bspw. mittels \firstfoot ein eigener Brieffuß definiert werden.
 \setkomavar{frombank}{}
 
 % ===== Signatur =====
 \setkomavar{signature}{%
-  \usekomavar{fromname}\\
-  Geschäftsführer%
+  Der Schriftwart der \usekomavar{fromname}\\
+  XX Lars Barkowsky $^{v}$/ Novick \parbox{0.5cm}{\includegraphics[width=0.5cm]{images/zirkel.eps}}\,14!
 }
 \renewcommand*{\raggedsignature}{\raggedright}
 % ====================

@@ -1,18 +1,20 @@
 \documentclass[%
+  a4paper,
+  foldmarks=true,
+  foldmarks=H,
+  formalign=left,
   fontsize=12pt, % Schriftgröße
   version=last%  % Neueste Version von KOMA-Skript verwenden
 ]{scrlttr2}
 
-% ===== Deutsche Sprache =====
-\usepackage[ngerman]{babel}
-\usepackage{fontenc}
-% ============================
-
 \LoadLetterOption{DIN} % Einstellungen für DIN 676 laden
+\LoadLetterOption{absender} % Absenderdaten und -einstellungen aus absender.lco laden
 
-%\LoadLetterOption{absender} % Absenderdaten und -einstellungen aus absender.lco laden
 
-\usepackage[xetex]{graphicx} % Um Grafiken (bspw. das Logo) einbinden zu können
+\usepackage[ngerman]{babel}
+\usepackage{fontspec}
+\usepackage{csquotes}
+\usepackage{graphicx}
 
 \begin{document}
 
@@ -25,16 +27,16 @@
 }
 
 % ====== Geschäftszeichenzeile =========
-\setkomavar{yourref}{}          % Ihr Zeichen
-\setkomavar{yourmail}{}         % Ihr Schreiben vom
-\setkomavar{myref}{}            % Unser Zeichen
-\setkomavar{customer}{}         % Kundennummer
-\setkomavar{invoice}{}          % Rechnungsnummer
-\setkomavar{place}{Musterstadt} % Ort
-\setkomavar{date}{\today}       % Datum
+%\setkomavar{yourref}{}          % Ihr Zeichen
+%\setkomavar{yourmail}{}         % Ihr Schreiben vom
+%\setkomavar{myref}{}            % Unser Zeichen
+%\setkomavar{customer}{}         % Kundennummer
+%\setkomavar{invoice}{}          % Rechnungsnummer
+\setkomavar{place}{Siegen} % Ort
+\setkomavar{date}{den \today}       % Datum
 % =====================================
 
-\setkomavar{title}{Titel}
+\setkomavar{title}{}
 
 \setkomavar{subject}{Betreff}
 
@@ -42,26 +44,7 @@
 
 \closing{Mit freundlichen Grüßen,}
 
-
-% ===== Postskriptum =====
-\ps PS: \dots
-% ========================
-
-% ===== Anlage(n) =====
-% \setkomavar*{enclseparator}{Anlage}
-\encl{%
-  Anlage 1\\
-  Anlage 2%
-}
-% ===================
-
-% ===== Verteiler =====
-% \setkomavar*{ccseparator}{Kopie an}
-\cc{%
-  Verteiler 1\\
-  Verteiler 2%
-}
-% =====================
+%\input{input/anlage}
 
 \end{letter}
 \end{document}
