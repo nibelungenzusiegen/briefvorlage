@@ -1,7 +1,11 @@
 Briefvorlage
 
 Offiziöses Layout
+Übernommen von https://gist.github.com/puppe/4378686
 
-Übernommen von 
+Serienbrief. Siehe serienbrief.tex.
 
-https://gist.github.com/puppe/4378686
+TODO: 
+Kontonummern mit angeben? 
+Fußzeile ausbauen?
+Faxnummer?

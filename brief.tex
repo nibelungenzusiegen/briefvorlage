@@ -1,50 +1,61 @@
+%
+% 2016-03-01 koneo  CC0 1.0 Universal
+%
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+%
+% Dies ist ein Anschreiben für das Versenden von Semesterprogrammen als Brief. 
+% Hier wird nur das Layout getestet.
+% 
+% Die Datei ist kommentiert.
+% 
+
 \documentclass[%
   a4paper,
   foldmarks=true,
   foldmarks=H,
   formalign=left,
+  firstfoot=false,
   fontsize=12pt, % Schriftgröße
   version=last%  % Neueste Version von KOMA-Skript verwenden
 ]{scrlttr2}
 
-\LoadLetterOption{DIN} % Einstellungen für DIN 676 laden
-\LoadLetterOption{absender} % Absenderdaten und -einstellungen aus absender.lco laden
+\input{input/000_packages}		% Notwendige Pakete
+\input{input/010_layout}		% Hier wird das Layout festgelegt
+\input{input/020_customize} 	% Hier werden kleiner Inhalte festgelegt
 
-
-\usepackage[ngerman]{babel}
-\usepackage{fontspec}
-\usepackage{csquotes}
-\usepackage{graphicx}
+% % Serienbriefiges - auskommentiert, weil mit dieser Datei nur die Auswirkungen vom Layout getestet werden soll
+% Das gilt auch für die anderen Serienbriefigen Befehle
+% \def\chopline#1;#2;#3;#4;#5;#6 \\{ %;#7;#8;#9 \\{
+%  \def\adresse{#1}		% Siehe Zeile 41 ff.
+%  \def\anrede{#2}
+%  \def\betreff{#3}
+%  \def\text{#4}
+%  \def\abschied{#5}
+%  \def\rest{#5}			% Schlupfvariabel für den Rest des Datenbank-Exports.
+% }
+% \newif\ifmore \moretrue % Einlesen, solange Zeilen im Dokument sind
 
 \begin{document}
 
-\begin{letter}{%
-% ===== Zielanschrift =====
-  Erika Musterfrau\\
-  Musterweg 43\\
-  56789 Musterhausen%
-% =======================
-}
+% \newread\quelle
+% \openin\quelle=input/daten.dat % Datei angeben, mit den Daten, die eingelesen werden sollen: 
 
-% ====== Geschäftszeichenzeile =========
-%\setkomavar{yourref}{}          % Ihr Zeichen
-%\setkomavar{yourmail}{}         % Ihr Schreiben vom
-%\setkomavar{myref}{}            % Unser Zeichen
-%\setkomavar{customer}{}         % Kundennummer
-%\setkomavar{invoice}{}          % Rechnungsnummer
-\setkomavar{place}{Siegen} % Ort
-\setkomavar{date}{den \today}       % Datum
-% =====================================
-
-\setkomavar{title}{}
-
-\setkomavar{subject}{Betreff}
-
-\opening{Sehr geehrte Frau Musterfrau,}
-
-\closing{Mit freundlichen Grüßen,}
-
-%\input{input/anlage}
-
-\end{letter}
+%\loop
+%  \read\quelle to \zeile
+%    \ifeof\quelle
+%      \global\morefalse
+%    \else
+%      \expandafter\chopline\zeile\\
+        \begin{letter}{
+          \adresse
+        }        
+        \setkomavar{subject}{\betreff}
+		\opening{\anrede}
+		\text 
+		\closing{\abschied}
+		%\input{input/anlage}
+		\end{letter}
+%    \fi
+%    \ifmore\repeat
+%  \closein\quelle
 \end{document}

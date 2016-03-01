@@ -1,0 +1,41 @@
+
+% Testvariabeln
+\newcommand \ladresse	{Titel Vorname Nachname\\Straße Nummer \\PLZ Stadt\\Land}	
+\newcommand \lanrede		{Werter Mensch \vulgo Mensch!}
+\newcommand \lbetreff	{Testbetreff}
+\newcommand \ltext		{hiermit lade ich dich zu unseren Veranstaltungen ein. Wir bieten dir Vorträge von \textbf{Bundestagsabgeordneten} und Workshops von unseren Jungphilister. Wie gewohnt auch Kommerse, Kneipen, kühles Bier und ein Gästezimmer. Bitte lade zu den offenen Veranstaltungen Interessierte ein und teile uns dies vorab mit: Wir stellen sicher, dass es niemanden an etwas fehlen wird.\par Dieses Semester haben wir eine sehr starke Fuxia, mit dir auf unseren Veranstaltungen können wir sie von unserem Lebensbund überzeugen und Bierchaos vermeiden. Ich wünsche dir und deiner Familie alles Gute, viel Erfolg, ein schönes Osterfest und ein Wiedersehen auf dem Haus der Nibelungen.}
+\newcommand \labschied	{Good bye!}
+\newcommand \lrest		{dasdarfkeinerlesen}	
+
+% Commands
+\newcommand \gprefix			{Christlich Deutsche Studentenverbindung}
+\newcommand \gprefixshort		{CDStV}
+\newcommand \gname				{Nibelungen zu Siegen}
+\newcommand \gsuffix			{im Wingolfsbund}
+\newcommand \gsuffixshort		{im WB}
+\newcommand \gsender			{XX Lars Barkowsky}
+\newcommand \gsenderbierspitz 	{Novick}
+\newcommand \gsenderamt         {Der Schriftwart der \usekomavar{fromname}}
+
+
+% ====== Geschäftszeichenzeile =========
+%\setkomavar{yourref}{}          	% Ihr Zeichen
+%\setkomavar{yourmail}{}         	% Ihr Schreiben vom
+%\setkomavar{myref}{}            	% Unser Zeichen
+%\setkomavar{customer}{}         	% Kundennummer
+%\setkomavar{invoice}{}          	% Rechnungsnummer
+\setkomavar{place}{Siegen} 			% Ort
+\setkomavar{date}{den \today}       % Datum
+% =====================================
+\setkomavar{title}{}
+
+
+% KOMA-Variables
+\setkomavar{fromname}{\gprefixshort \gname \gsuffixshort}			% Name
+\setkomavar{fromaddress}{Sieghütter Hauptweg 110\\D-57072 Siegen}	% Adresse
+\setkomavar{fromfax}{n/A} 											% Faxnummer
+\setkomavar{fromemail}{hallo@nibelungen-siegen.de} 					% Email-Adresse
+\setkomavar{fromphone}{+49 (0) 271 – 770 218 6}						% Telefonnummer
+\setkomavar{fromurl}[Website:~]{www.nibelungen-siegen.de}			% Website
+\setkomavar{backaddress}{\gname~\usekomavar{backaddressseparator}\usekomavar{fromaddress}}
+\setkomavar{backaddressseparator}{ $\diamond$ }

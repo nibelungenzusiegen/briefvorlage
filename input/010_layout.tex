@@ -1,4 +1,9 @@
-\ProvidesFile{absender.lco}
+\LoadLetterOption{DIN} % Einstellungen für DIN 676 laden
+
+\newcommand \vulgo {$^{v}$/~}
+
+%\LoadLetterOption{absender} % Absenderdaten und -einstellungen aus absender.lco laden
+%\ProvidesFile{absender.lco}
 
 \KOMAoptions{%
 % fromemail=true,       % Email wird im Briefkopf angezeigt
@@ -9,20 +14,8 @@ fromlogo=true,        % Logo wird im Briefkopf angezeigt
 % subject=titled,       % Druckt "Betrifft: " vor dem Betreff
 locfield=wide,          % Breite Absenderergänzung (location)
 fromalign=left,         % Ausrichtung des Briefkopfes
-fromrule=afteraddress%  % Trennlinie unter dem Briefkopf
+fromrule=afteraddress  % Trennlinie unter dem Briefkopf
 }
-
-\setkomavar{fromname}{CDStV Nibelungen zu Siegen im Wingolfsbund} % Name
-\setkomavar{fromaddress}{% % Adresse
-  Sieghütter Hauptweg 110\\
-  D-57072 Siegen
-}
-\setkomavar{fromfax}{n/A} % Faxnummer
-\setkomavar{fromemail}{hallo@nibelungen-siegen.de} % Email-Adresse
-\setkomavar{fromphone}{+49 (0) 271 – 770 218 6} % Telefonnummer
-\setkomavar{fromurl}[Website:~]{www.nibelungen-siegen.de} % Website
-\setkomavar{backaddress}{Nibelungen zu Siegen\usekomavar{backaddressseparator}\usekomavar{fromaddress}}
-\setkomavar{backaddressseparator}{ $\diamond$ }
 
 % ===== Absenderergänzung =====
 \setkomavar{location}{%
@@ -38,16 +31,15 @@ fromrule=afteraddress%  % Trennlinie unter dem Briefkopf
    
 
 % Logo
-\setkomavar{fromlogo}{\includegraphics[width=3.5cm]{images/wappen.png}}
+\setkomavar{fromlogo}{\includegraphics[width=2cm]{images/wappen.png}}
 
-\setkomavar{firsthead}[]{
+\setkomavar{firsthead}[c]{
 \noindent
-\parbox[][][t]{4cm}{\usekomavar{fromlogo}} 
+\parbox[][][t]{2cm}{\usekomavar{fromlogo}} 
 \parbox[][][s]{1\textwidth}{
-{\Large Christlich Deutsche Studentenverbindung} 	\\
-{\Huge Nibelungen zu Siegen}						\\
-{\Large im Wingolfsbund}							} 
- 
+	{\large \gprefix}		\\
+	{\LARGE \gname}			\\
+	{\large \gsuffix}		} 
 }
 
 % Die Bankverbindung wird nicht automatisch verwendet. Dazu muss bspw. mittels \firstfoot ein eigener Brieffuß definiert werden.
@@ -55,8 +47,8 @@ fromrule=afteraddress%  % Trennlinie unter dem Briefkopf
 
 % ===== Signatur =====
 \setkomavar{signature}{%
-  Der Schriftwart der \usekomavar{fromname}\\
-  XX Lars Barkowsky $^{v}$/ Novick \parbox{0.5cm}{\includegraphics[width=0.5cm]{images/zirkel.eps}}\,14!
+  \gsenderamt\\
+  \gsender ~\vulgo \gsenderbierspitz  ~ \parbox{0.5cm}{\includegraphics[width=0.5cm]{images/zirkel.eps}}
 }
 \renewcommand*{\raggedsignature}{\raggedright}
 % ====================
