@@ -1,0 +1,72 @@
+%
+% 2016-03-01 koneo  CC0 1.0 Universal
+%
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+%
+% Dies ist ein Anschreiben für das Versenden von Semesterprogrammen als Serienbrief.
+% Individuell einstellbar sind Adresse, Anrede, Textinhalt und Schlussfloskel mit Hilfe einer externen Datei, die diese Textbausteine vorhält.
+% 
+% Die Datei ist kommentiert.
+% 
+
+\documentclass[%
+  a4paper,
+  foldmarks=true,
+  foldmarks=H,
+  formalign=left,
+  firstfoot=false,
+  fontsize=12pt, % Schriftgröße
+  version=last%  % Neueste Version von KOMA-Skript verwenden
+]{scrlttr2}
+
+\input{input/000_packages}		% Notwendige Pakete
+\input{input/010_layout}		% Hier wird das Layout festgelegt
+\input{input/020_customize} 	% Hier werden kleiner Inhalte festgelegt
+
+% Serienbriefiges
+ \def\chopline#1;#2;#3;#4;#5;#6 \\{ %;#7;#8;#9 \\{
+  \def\ladresse{#1}		% Siehe Zeile 41 ff.
+  \def\lanrede{#2}
+  \def\lbetreff{#3}
+  \def\ltext{#4}
+  \def\labschied{#5}
+  \def\lrest{#5}			% Schlupfvariabel für den Rest des Datenbank-Exports.
+ }
+ \newif\ifmore \moretrue % Einlesen, solange Zeilen im Dokument sind
+
+\begin{document}
+
+\newread\quelle
+
+\openin\quelle=input/Testdaten.csv % Datei angeben, mit den Daten, die eingelesen werden sollen: 
+% Die Datei enthält die Empfänger pro Zeile
+% Spaltenweise sind die Textbausteine adresse, anrede, betreff, text und abschied angegeben. 
+% Die Spalten sind mit ";" getrennt. Der Spalteninhalt darf LaTeX-Anweisungen enthalten, aber kein ";".
+%
+% adresse: 	Titel\\Vorname Nachname\\PLZ Stadt\\Land   - \\" bedeutet Zeilenumbruch
+% anrede:  	Individualisierte Anrede "\vulgo" wird entsprechend erstetzt
+% text: 	Textbaustein mit LaTeX-Anweisungen
+% abschied: Individualisierter Abschied.
+% rest: 	Wahrscheinlich werden die oberen Spalten von Rohdaten zusammengefügt. Um
+% 			einen Arbeitsschritt zu sparen (Nur die finalen Spalten in der Datei zu 
+% 			haben) werden diese einfach weggelesen.
+%   
+\loop
+  \read\quelle to \zeile
+    \ifeof\quelle
+      \global\morefalse
+    \else
+      \expandafter\chopline\zeile\\
+        \begin{letter}{
+          \ladresse
+        }        
+        \setkomavar{subject}{\lbetreff}
+		\opening{\lanrede}
+        \ltext
+		\closing{\labschied}
+		%\input{input/anlage}
+		\end{letter}
+    \fi
+    \ifmore\repeat
+  \closein\quelle
+\end{document}
